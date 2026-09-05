@@ -9,7 +9,7 @@ from langchain_classic.output_parsers import OutputFixingParser
 from prompts.prompts_library import PROMPT_REGISTRY
 
 
-class ResumeAnalyser:
+class ResumeAnalyer:
 
     def __init__(self, session_id: str):
         self.log = CustomLogger().get_logger(__name__)
