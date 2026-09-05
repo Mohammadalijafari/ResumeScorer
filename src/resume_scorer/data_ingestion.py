@@ -4,7 +4,7 @@ import sys
 import uuid
 from datetime import datetime
 from logger.custom_logger import CustomLogger
-from exceptions.custom_exception import ResumeAnalyserException
+from exceptions.custom_exception import ResumeAnalyzerException
 
 
 class ResumeHandler:
@@ -26,7 +26,7 @@ class ResumeHandler:
 
         except Exception as e:
             self.log.error(f"Error initializing ResumeHandler: {e}")
-            raise ResumeAnalyserException("Error initializing ResumeHandler", sys)
+            raise ResumeAnalyzerException("Error initializing ResumeHandler", sys)
 
     def save_pdf(self, uploaded_file):
         try:
@@ -37,7 +37,7 @@ class ResumeHandler:
                 file_name = os.path.basename(uploaded_file.name)
 
             if not file_name.lower().endswith(".pdf"):
-                raise ResumeAnalyserException("Invalid file type. Only PDFs are allowed", sys)
+                raise ResumeAnalyzerException("Invalid file type. Only PDFs are allowed", sys)
 
             save_path = os.path.join(self.session_path, file_name)
 
@@ -49,7 +49,7 @@ class ResumeHandler:
             elif hasattr(uploaded_file, "read"):
                 file_bytes = uploaded_file.read()
             else:
-                raise ResumeAnalyserException("unsupported upload file type: cannot read bytes", sys)
+                raise ResumeAnalyzerException("unsupported upload file type: cannot read bytes", sys)
 
             with open(save_path, "wb") as f:
                 f.write(file_bytes)
@@ -60,7 +60,7 @@ class ResumeHandler:
 
         except Exception as e:
             self.log.error(f"Error saving Resume: {e}")
-            raise ResumeAnalyserException("Error saving Resume", sys)
+            raise ResumeAnalyzerException("Error saving Resume", sys)
 
     def read_pdf(self, pdf_path: str) -> str:
         try:
@@ -75,4 +75,4 @@ class ResumeHandler:
             return text
         except Exception as e:
             self.log.error(f"Error reading PDF resume: {e}")
-            raise ResumeAnalyserException("Error reading PDF resume", sys)
+            raise ResumeAnalyzerException("Error reading PDF resume", sys)

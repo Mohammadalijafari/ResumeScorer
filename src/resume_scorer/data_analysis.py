@@ -2,14 +2,14 @@ import os
 import sys
 from utils.model_loader import ModelLoader
 from logger.custom_logger import CustomLogger
-from exceptions.custom_exception import ResumeAnalyserException
+from exceptions.custom_exception import ResumeAnalyzerException
 from models.models import *
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_classic.output_parsers import OutputFixingParser
 from prompts.prompts_library import PROMPT_REGISTRY
 
 
-class ResumeAnalyer:
+class ResumeAnalyzer:
 
     def __init__(self, session_id: str):
         self.log = CustomLogger().get_logger(__name__)
@@ -27,7 +27,7 @@ class ResumeAnalyer:
 
         except Exception as e:
             self.log.error(f"Error initializing ResumeAnalyser: {e}")
-            raise ResumeAnalyserException("Error initializing ResumeAnalyser", sys)
+            raise ResumeAnalyzerException("Error initializing ResumeAnalyzer", sys)
 
     def analyze_resume(self, resume_text: str, job_description: str) -> dict:
         try:
@@ -63,4 +63,4 @@ class ResumeAnalyer:
             self.log.error(f"Exception tye: {type(e)}")
             import traceback
             self.log.error(f"Traceback: {traceback.format_exc()}")
-            raise ResumeAnalyserException("Meta date extraction failed", sys)
+            raise ResumeAnalyzerException("Meta date extraction failed", sys)

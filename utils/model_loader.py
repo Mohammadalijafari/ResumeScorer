@@ -5,7 +5,7 @@ from utils.config_loader import load_config
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 from logger.custom_logger import CustomLogger
-from exceptions.custom_exception import ResumeAnalyserException
+from exceptions.custom_exception import ResumeAnalyzerException
 
 log = CustomLogger().get_logger(__name__)
 
@@ -24,7 +24,7 @@ class ModelLoader:
         missing = [k for k, v in self.api_key.items() if not v]
         if missing:
             log.error("Missing environment variables", missing_vars=missing)
-            raise ResumeAnalyserException("Missing environment variables", sys)
+            raise ResumeAnalyzerException("Missing environment variables", sys)
         log.info("Environment variables validated", available_keys=[k for k in self.api_key.keys(k)])
 
     def load_llm(self):

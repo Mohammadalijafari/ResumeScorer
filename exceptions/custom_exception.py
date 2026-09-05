@@ -2,7 +2,7 @@ import sys
 import traceback
 
 
-class ResumeAnalyserException(Exception):
+class ResumeAnalyzerException(Exception):
     def __init__(self, error_message, error_details):
         __, __, exc_tb = error_details.exc_info()
         self.file_name = exc_tb.tb_frame.f_code.co_filename
@@ -22,5 +22,5 @@ if __name__ == "__main__":
     try:
         a = int("test")
     except Exception as e:
-        app_exc = ResumeAnalyserException(e, sys)
+        app_exc = ResumeAnalyzerException(e, sys)
         raise  app_exc
