@@ -7,7 +7,8 @@ import structlog
 class CustomLogger:
 
     def __init__(self, log_dir="logs"):
-        self.logs_dir = os.path.join(os.getcwd(), log_dir)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.logs_dir = os.path.join(base_dir, log_dir)
         os.makedirs(self.logs_dir, exist_ok=True)
 
         log_file = f"{datetime.now().strftime('%m_%d_%H_%M_%S')}.log"
@@ -35,6 +36,8 @@ class CustomLogger:
                 structlog.processors.TimeStamper(fmt="iso", utc=True, key="timestamp"),
                 structlog.processors.add_log_level,
                 structlog.processors.EventRenamer(to="event"),
+                structlog.processors.StackInfoRenderer(),
+                structlog.processors.format_exc_info,
                 structlog.processors.JSONRenderer(),
             ],
             logger_factory=structlog.stdlib.LoggerFactory(),

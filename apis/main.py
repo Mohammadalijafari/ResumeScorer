@@ -10,7 +10,7 @@ from src.resume_scorer.data_analysis import ResumeAnalyser
 from src.resume_scorer.data_ingestion import ResumeHandler
 from logger.custom_logger import CustomLogger
 
-log = CustomLogger.get_logger(__name__)
+log = CustomLogger().get_logger(__name__)
 
 app = FastAPI(title="Resume Scorer", version="0.1")
 
@@ -35,7 +35,7 @@ async def serve_ui(request: Request):
     return resp
 
 
-@app.get("/health", response_class=HTMLResponse)
+@app.get("/health")
 def health() -> Dict[str, str]:
     log.info("Health check passed.")
     return {"status": "ok", "service": "Resume-Scorer"}
