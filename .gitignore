@@ -21,7 +21,9 @@ site_build
 .venv
 docs.zip
 archive.zip
-
+logger/logs
+logs/
+data/
 # vim temporary files
 *~
 .*.sw?
