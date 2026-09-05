@@ -2,11 +2,14 @@
 
 > **AI-powered resume analysis and scoring system built with Python and FastAPI.**
 
-ResumeScorer is an intelligent backend system designed to analyze resumes against job requirements and provide structured insights into candidate suitability.
+ResumeScorer is an intelligent backend system designed to analyze resumes against job requirements and provide
+structured insights into candidate suitability.
 
-The project combines **Natural Language Processing (NLP), Large Language Models (LLMs), semantic search, document processing, and a modular Python architecture** to build a foundation for automated resume evaluation.
+The project combines **Natural Language Processing (NLP), Large Language Models (LLMs), semantic search, document
+processing, and a modular Python architecture** to build a foundation for automated resume evaluation.
 
-The goal is to transform unstructured resume documents into meaningful, structured information that can be used for candidate evaluation, job matching, and recruitment workflows.
+The goal is to transform unstructured resume documents into meaningful, structured information that can be used for
+candidate evaluation, job matching, and recruitment workflows.
 
 ---
 
@@ -23,7 +26,8 @@ ResumeScorer aims to automate part of this process by:
 5. Using AI-powered reasoning to evaluate relevance
 6. Producing structured scoring and analysis
 
-The project is designed with a modular architecture so that individual components—such as document ingestion, AI processing, prompts, data analysis, and API endpoints—can evolve independently.
+The project is designed with a modular architecture so that individual components—such as document ingestion, AI
+processing, prompts, data analysis, and API endpoints—can evolve independently.
 
 ---
 
@@ -138,7 +142,7 @@ The project follows a modular processing pipeline:
 ## 🛠️ Technology Stack
 
 | Category                | Technology                 |
-| ----------------------- | -------------------------- |
+|-------------------------|----------------------------|
 | Language                | Python                     |
 | API Framework           | FastAPI                    |
 | Data Validation         | Pydantic                   |
@@ -155,7 +159,8 @@ The project follows a modular processing pipeline:
 | Package Management      | setuptools                 |
 | Server                  | Uvicorn                    |
 
-The dependency stack currently includes FastAPI, Pydantic, SQLAlchemy, FAISS, PyMuPDF, LangChain, LangGraph, Google GenAI, Groq, Streamlit, and pytest.
+The dependency stack currently includes FastAPI, Pydantic, SQLAlchemy, FAISS, PyMuPDF, LangChain, LangGraph, Google
+GenAI, Groq, Streamlit, and pytest.
 
 ---
 
@@ -202,7 +207,8 @@ ResumeScorer/
 └── README.md
 ```
 
-The repository is organized around separate API, configuration, model, prompt, processing, logging, exception, and utility components, with the core resume-processing package located under `src/resume_scorer`.
+The repository is organized around separate API, configuration, model, prompt, processing, logging, exception, and
+utility components, with the core resume-processing package located under `src/resume_scorer`.
 
 ---
 
@@ -237,7 +243,8 @@ FAISS provides the foundation for efficient vector similarity search.
 
 ### 5. AI reasoning
 
-LLM-powered components can analyze the extracted information and generate higher-level insights using configurable prompts.
+LLM-powered components can analyze the extracted information and generate higher-level insights using configurable
+prompts.
 
 ### 6. Scoring
 
@@ -259,7 +266,8 @@ Current dependencies include:
 * LangGraph
 * FAISS
 
-This allows the project to evolve from simple LLM calls toward more sophisticated retrieval and workflow-based AI systems.
+This allows the project to evolve from simple LLM calls toward more sophisticated retrieval and workflow-based AI
+systems.
 
 ---
 
@@ -270,7 +278,7 @@ The scoring pipeline can be extended to evaluate a candidate across multiple dim
 For example:
 
 | Dimension        | Purpose                                                |
-| ---------------- | ------------------------------------------------------ |
+|------------------|--------------------------------------------------------|
 | Skills           | Match candidate skills with job requirements           |
 | Experience       | Evaluate relevant professional experience              |
 | Education        | Compare educational background                         |
@@ -281,7 +289,8 @@ For example:
 
 A future scoring implementation can combine deterministic rules with semantic similarity and LLM-based reasoning.
 
-> **Important:** Resume scores should be treated as decision-support signals rather than definitive hiring decisions. Automated scoring can contain bias, miss context, or incorrectly interpret information.
+> **Important:** Resume scores should be treated as decision-support signals rather than definitive hiring decisions.
+> Automated scoring can contain bias, miss context, or incorrectly interpret information.
 
 ---
 
@@ -421,7 +430,8 @@ Response:
 }
 ```
 
-These endpoints currently serve as the basic API foundation while the resume-processing functionality is developed around the project's modular components.
+These endpoints currently serve as the basic API foundation while the resume-processing functionality is developed
+around the project's modular components.
 
 ---
 
@@ -553,15 +563,18 @@ The system is designed to work with different AI providers instead of depending 
 
 ### Structured AI
 
-AI outputs should ultimately be converted into structured, machine-readable data rather than relying solely on free-form text.
+AI outputs should ultimately be converted into structured, machine-readable data rather than relying solely on free-form
+text.
 
 ### Explainability
 
-A useful resume score should explain **why** a candidate received a particular score instead of producing an unexplained number.
+A useful resume score should explain **why** a candidate received a particular score instead of producing an unexplained
+number.
 
 ### Extensibility
 
-The architecture is intended to make it straightforward to introduce new models, scoring strategies, document formats, and matching algorithms.
+The architecture is intended to make it straightforward to introduce new models, scoring strategies, document formats,
+and matching algorithms.
 
 ---
 
@@ -569,9 +582,11 @@ The architecture is intended to make it straightforward to introduce new models,
 
 > **This project is actively under development.**
 
-The repository currently contains the foundational FastAPI application and modular resume-scoring architecture, while several production-level components and complete scoring workflows remain under development.
+The repository currently contains the foundational FastAPI application and modular resume-scoring architecture, while
+several production-level components and complete scoring workflows remain under development.
 
-The project should therefore be considered a **development/portfolio project rather than a production recruitment system**.
+The project should therefore be considered a **development/portfolio project rather than a production recruitment system
+**.
 
 ---
 
