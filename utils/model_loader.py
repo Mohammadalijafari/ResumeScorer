@@ -15,7 +15,7 @@ class ModelLoader:
     def __init__(self):
         load_dotenv()
         self._validate_env()
-        self.config - load_config()
+        self.config = load_config()
         log.info("configuration loaded successfully", config_keys=list(self.config.keys()))
 
     def _validate_env(self):
