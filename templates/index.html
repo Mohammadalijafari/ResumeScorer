@@ -2,9 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Scorer — AI-Powered Resume Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="app-shell">
+
+    <!-- ============ HEADER ============ -->
+    <header class="app-header">
+        <div class="app-header__brand">
+      <span class="app-header__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+          <path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor"
+                stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M8.5 13.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg>
+      </span>
+            <div class="app-header__titles">
+                <h1 class="app-header__title">Resume Scorer</h1>
+                <p class="app-header__subtitle">AI-Powered Resume Analysis &amp; Job Matching</p>
+            </div>
+        </div>
+
+        <div class="app-header__actions">
+            <button type="button" id="theme-toggle" class="icon-button" aria-label="Switch to light mode"
+                    aria-pressed="false">
+                <svg class="icon-button__icon icon-button__icon--moon" viewBox="0 0 24 24" width="18" height="18"
+                     fill="none">
+                    <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor"
+                          stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+                <svg class="icon-button__icon icon-button__icon--sun" viewBox="0 0 24 24" width="18" height="18"
+                     fill="none">
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"
+                          stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button type="button" id="help-toggle" class="icon-button" aria-label="Open help" aria-haspopup="dialog"
+                    aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M9.7 9.3a2.3 2.3 0 1 1 3.4 2c-.7.5-1.1 1-1.1 1.9" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round"/>
+                    <circle cx="12" cy="16.7" r="0.9" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-main">
+
+        <!-- ============ UPLOAD SECTION ============ -->
+        <section id="upload-view" class="view upload-view" aria-labelledby="upload-heading">
+            <div class="upload-card">
+                <h2 id="upload-heading" class="upload-card__title">Upload your resume</h2>
+                <p class="upload-card__description">Upload your resume and a job description for a detailed, AI-scored
+                    analysis of how well you match the role.</p>
+
+                <form id="analysis-form" class="upload-form" novalidate>
+
+                    <div class="field-group">
+                        <span class="field-group__label">Resume</span>
+                        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-describedby="dropzone-hint">
+                            <input type="file" id="resume-input" class="dropzone__input" accept="application/pdf"
+                                   hidden>
+                            <svg class="dropzone__icon" viewBox="0 0 24 24" width="30" height="30" fill="none">
+                                <path d="M12 15.5V4M12 4 8 8M12 4l4 4" stroke="currentColor" stroke-width="1.6"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5" stroke="currentColor"
+                                      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p class="dropzone__label">Drop your resume here, or <span class="dropzone__browse">choose a PDF</span>
+                            </p>
+                            <p id="dropzone-hint" class="dropzone__hint">PDF only, up to 10&nbsp;MB</p>
+                            <p id="file-name-display" class="dropzone__filename" hidden></p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="job-description" class="field-group__label">Job description</label>
+                        <textarea id="job-description" class="job-textarea" rows="8"
+                                  placeholder="Paste the job description you're applying to — responsibilities, required skills, experience level, and qualifications all help sharpen the analysis."></textarea>
+                    </div>
+
+                    <button type="submit" id="analyze-button" class="btn-primary">
+                        <span class="btn-primary__label">Analyze resume</span>
+                        <span class="btn-primary__spinner" aria-hidden="true"></span>
+                    </button>
+                    <p id="form-error" class="form-error" role="alert" hidden></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============ RESULTS SECTION ============ -->
+        <section id="results-view" class="view results-view" aria-labelledby="results-heading" hidden>
+
+            <!-- Overall Score -->
+            <article class="score-card">
+                <div class="score-ring" id="score-ring" role="img" aria-label="Overall resume score">
+                    <svg viewBox="0 0 140 140" width="140" height="140" class="score-ring__svg">
+                        <defs>
+                            <linearGradient id="score-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b7cf6"/>
+                                <stop offset="100%" stop-color="#5b8def"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="70" cy="70" r="60" class="score-ring__track"></circle>
+                        <circle cx="70" cy="70" r="60" class="score-ring__progress" id="score-ring-progress"></circle>
+                    </svg>
+                    <div class="score-ring__value">
+                        <span id="score-number">0</span>
+                        <span class="score-ring__max">/100</span>
+                    </div>
+                </div>
+                <div class="score-card__body">
+                    <h2 id="results-heading" class="score-card__title">Resume analysis summary</h2>
+                    <p id="score-description" class="score-card__description">—</p>
+                </div>
+            </article>
+
+            <!-- Analysis Grid -->
+            <div class="analysis-grid">
+
+                <article class="analysis-card analysis-card--skills">
+                    <h3 class="analysis-card__title">Skills analysis</h3>
+                    <p id="skills-summary" class="analysis-card__summary">—</p>
+                    <div class="analysis-card__chart">
+                        <canvas id="skills-chart" aria-label="Skills match radar chart" role="img"></canvas>
+                    </div>
+                </article>
+
+                <article class="analysis-card analysis-card--experience">
+                    <h3 class="analysis-card__title">Experience match</h3>
+                    <p id="experience-summary" class="analysis-card__summary">—</p>
+                    <div class="analysis-card__chart analysis-card__chart--split">
+                        <canvas id="experience-bar-chart" aria-label="Years of experience comparison"
+                                role="img"></canvas>
+                        <canvas id="experience-donut-chart" aria-label="Experience relevance breakdown"
+                                role="img"></canvas>
+                    </div>
+                </article>
+
+                <article class="analysis-card analysis-card--education">
+                    <h3 class="analysis-card__title">Education fit</h3>
+                    <p id="education-summary" class="analysis-card__summary">—</p>
+                    <div class="analysis-card__chart">
+                        <canvas id="education-chart" aria-label="Degree level and field of study comparison"
+                                role="img"></canvas>
+                    </div>
+                </article>
+
+                <article class="analysis-card analysis-card--compliance">
+                    <h3 class="analysis-card__title">Job compliance</h3>
+                    <p id="compliance-summary" class="analysis-card__summary">—</p>
+                    <div class="analysis-card__chart">
+                        <canvas id="compliance-chart" aria-label="Job compliance breakdown by category"
+                                role="img"></canvas>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Strengths & Improvements -->
+            <div class="notes-grid">
+                <article class="notes-card notes-card--positive">
+                    <h3 class="notes-card__title">Additional strengths</h3>
+                    <ul id="strengths-list" class="notes-card__list"></ul>
+                </article>
+
+                <article class="notes-card notes-card--improve">
+                    <h3 class="notes-card__title">Areas of improvement</h3>
+                    <ul id="improvements-list" class="notes-card__list"></ul>
+                </article>
+            </div>
+
+            <div class="reset-row">
+                <button type="button" id="new-analysis-button" class="btn-secondary">Start new analysis</button>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<!-- ============ HELP DIALOG ============ -->
+<div id="help-overlay" class="help-overlay" hidden>
+    <div class="help-dialog" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <div class="help-dialog__header">
+            <h2 id="help-title">How Resume Scorer works</h2>
+            <button type="button" id="help-close" class="icon-button" aria-label="Close help">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                    <path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <ol class="help-dialog__steps">
+            <li><strong>Upload your resume.</strong> Drag a PDF into the upload area, or click it to browse your files.
+            </li>
+            <li><strong>Paste the job description.</strong> Include the responsibilities and required skills so the
+                analysis has something to compare against.
+            </li>
+            <li><strong>Click Analyze resume.</strong> You'll get an overall score plus a breakdown across skills,
+                experience, education, and job compliance.
+            </li>
+            <li><strong>Review your strengths and gaps.</strong> Use the suggested improvements to tailor your resume
+                before you apply.
+            </li>
+            <li><strong>Start a new analysis</strong> anytime to score another resume or role.</li>
+        </ol>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
