@@ -1,0 +1,54 @@
+Job Title: Backend Developer (Python / Django / FastAPI)
+
+About the Role:
+We are looking for a motivated Backend Developer to join our engineering team and help design, build, and maintain the server-side systems that power our web and mobile products. You'll work closely with frontend engineers, product managers, and DevOps to ship reliable, well-tested APIs and services. This is a great opportunity for someone who enjoys clean architecture, solving real performance problems, and mentoring teammates along the way.
+
+Responsibilities:
+- Design, build, and maintain RESTful APIs using Django REST Framework and/or FastAPI
+- Write clean, maintainable, well-tested Python code following best practices
+- Design and optimize relational database schemas and queries (PostgreSQL preferred)
+- Collaborate with frontend developers to define API contracts and integrate services
+- Implement authentication, authorization, and data validation across services
+- Use Docker to containerize services for local development and deployment
+- Set up and maintain background task processing (e.g., Celery, Redis) for async workloads
+- Participate in code reviews, sprint planning, and technical design discussions
+- Monitor application performance and troubleshoot production issues
+- Write and maintain unit and integration tests (pytest) to ensure code quality
+- Document APIs and internal systems for other engineers to reference
+- Mentor junior developers and contribute to a collaborative, supportive team culture
+
+Required Qualifications:
+- 2+ years of professional experience as a backend or full-stack developer
+- Strong proficiency in Python
+- Hands-on experience with Django and/or FastAPI
+- Solid understanding of REST API design principles
+- Experience working with relational databases (PostgreSQL, MySQL, or similar)
+- Familiarity with version control workflows using Git
+- Understanding of software testing practices, including unit testing
+- Ability to write clear, maintainable, and well-documented code
+- Comfortable working in an Agile/Scrum environment
+
+Preferred Qualifications:
+- Experience with Docker and containerized deployments
+- Experience with Redis and/or Celery for background job processing
+- Familiarity with cloud platforms (AWS, GCP, or Azure)
+- Exposure to CI/CD pipelines and automated deployment workflows
+- Basic understanding of frontend technologies (JavaScript, React) to collaborate effectively across the stack
+- Experience with API authentication standards (JWT, OAuth2)
+- Prior experience mentoring or leading a small team
+- A degree in Computer Science, Engineering, or a related field, or equivalent practical experience
+
+Soft Skills:
+- Strong communication skills and comfort working with cross-functional teams
+- A proactive, detail-oriented approach to problem-solving
+- Eagerness to learn new tools and technologies as the stack evolves
+- A collaborative mindset and willingness to support and mentor teammates
+
+What We Offer:
+- Competitive salary and performance-based bonuses
+- Flexible/remote work options
+- Opportunities for professional growth and technical mentorship
+- A supportive, low-ego engineering culture that values clean code and continuous learning
+
+Location: Remote (or hybrid, depending on candidate location)
+Employment Type: Full-time

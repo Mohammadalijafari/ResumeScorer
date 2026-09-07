@@ -11,7 +11,7 @@ class ResumeHandler:
 
     def __init__(self, data_dir=None, session_id=None):
         try:
-            self.log = CustomLogger.get_logger(__name__)
+            self.log = CustomLogger().get_logger(__name__)
             self.data_dir = data_dir or os.getenv(
                 "DATA_STORAGE_PATH",
                 os.path.join(os.getcwd(), "data", "resume_analysis")
@@ -33,8 +33,8 @@ class ResumeHandler:
             file_name = None
             if hasattr(uploaded_file, "file_name") and uploaded_file.file_name:
                 file_name = os.path.basename(uploaded_file.file_name)
-            elif hasattr(uploaded_file, "filename") and uploaded_file.name:
-                file_name = os.path.basename(uploaded_file.name)
+            elif hasattr(uploaded_file, "filename") and uploaded_file.filename:
+                file_name = os.path.basename(uploaded_file.filename)
 
             if not file_name.lower().endswith(".pdf"):
                 raise ResumeAnalyzerException("Invalid file type. Only PDFs are allowed", sys)

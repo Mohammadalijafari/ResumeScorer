@@ -25,7 +25,7 @@ class ModelLoader:
         if missing:
             log.error("Missing environment variables", missing_vars=missing)
             raise ResumeAnalyzerException("Missing environment variables", sys)
-        log.info("Environment variables validated", available_keys=[k for k in self.api_key.keys(k)])
+        log.info("Environment variables validated", available_keys=(self.api_key.keys()))
 
     def load_llm(self):
         llm_block = self.config["llm"]
