@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
 
-from src.resume_scorer.data_analysis import ResumeAnalyser
+from src.resume_scorer.data_analysis import ResumeAnalyzer
 from src.resume_scorer.data_ingestion import ResumeHandler
 from logger.custom_logger import CustomLogger
 
@@ -54,7 +54,7 @@ async def scorer_resume(resume: UploadFile = File(...), job_description: str = F
         log.info(f"Extracted text length: {len(cv_content)} chars")
 
         log.info("Starting LLM analysis")
-        analyzer = ResumeAnalyser()
+        analyzer = ResumeAnalyzer(session_id=handler.session_id)
         analysis_result = analyzer.analyze_resume(cv_content, job_description)
 
         log.info(
