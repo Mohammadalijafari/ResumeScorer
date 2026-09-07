@@ -1,14 +1,14 @@
 import os
 from pathlib import Path
 from src.resume_scorer.data_ingestion import ResumeHandler
-from src.resume_scorer.data_analysis import ResumeAnalyser
+from src.resume_scorer.data_analysis import ResumeAnalyzer
 
 CV_PATH = "data/CV.pdf"
 
 
 class SimFile:
     def __init__(self, file_path):
-        self.name = Path(file_path).name
+        self.filename = Path(file_path).name
         self._file_path = file_path
 
     def getbuffer(self):
@@ -27,7 +27,7 @@ def main():
     with open(job_file, "r", encoding="utf-8") as f:
         job_description = f.read()
 
-    analyzer = ResumeAnalyser()
+    analyzer = ResumeAnalyzer(session_id="test_session")
 
     result = analyzer.analyze_resume(resume_text, job_description)
     print(result)
